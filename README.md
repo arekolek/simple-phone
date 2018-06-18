@@ -18,7 +18,7 @@ To have your app listed as a Phone app, you must have an activity with at least 
 
 And to be honest, that's a bit counterintuitive, because setting the default Phone app is separate from setting a default Dialer – the former controls only the ongoing call UI, while the latter controls only the dialing UI.
 
-Filters in the [AndroidManifest](app/src/main/AndroidManifest.xml) improve a bit over that minimum, to allow setting the app as a default for the `DIAL` action, and launching from web browser. The [Dialer app in AOSP][3] has even more filters declared.
+Filters in the [AndroidManifest](app/src/main/AndroidManifest.xml) improve a bit over that minimum, to allow *setting the app as the default Dialer*, and launching dialer from web browser. The [Dialer app in AOSP][3] has even more filters declared.
 
 You can make it easier for the user to set your app as the default Phone app with the help from `TelecomManager`:
 
