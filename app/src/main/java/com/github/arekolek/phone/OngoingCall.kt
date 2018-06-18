@@ -6,12 +6,12 @@ import io.reactivex.subjects.BehaviorSubject
 import timber.log.Timber
 
 object OngoingCall {
-    val state: BehaviorSubject<Int> = BehaviorSubject.create<Int>()
+    val state: BehaviorSubject<Int> = BehaviorSubject.create()
 
     private val callback = object : Call.Callback() {
-        override fun onStateChanged(call: Call, state: Int) {
+        override fun onStateChanged(call: Call, newState: Int) {
             Timber.d(call.toString())
-            this@OngoingCall.state.onNext(state)
+            state.onNext(newState)
         }
     }
 
