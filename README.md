@@ -4,7 +4,7 @@ This project shows the absolute minimum an Android Phone app needs to implement 
 
 ## Becoming a default Phone app
 
-To have your app listed as a Phone app, you must have an activity with at least those intent filters (to handle both cases mentioned in documentation of [ACTION_DIAL][1], also mentioned in [DefaultDialerManager hidden class][2]):
+To have your app listed as a Phone app, you must have an activity with at least those intent filters (to handle both cases mentioned in documentation of [`ACTION_DIAL`][1], also mentioned in [`DefaultDialerManager` hidden class][2]):
 
 ```xml
 <intent-filter>
@@ -60,7 +60,7 @@ There you should handle at least [`onCallAdded`][6] (set up listeners on `Call`,
 
 If the user wants to answer the call, you need to invoke the method [`Call#answer(int)`][8] (with [`VideoProfile.STATE_AUDIO_ONLY`][9] for example). In this example [`CallActivity`](app/src/main/java/com/github/arekolek/phone/CallActivity.kt) reacts to user input by calling those methods on `Call` object shared through the [`OngoingCall`](app/src/main/java/com/github/arekolek/phone/OngoingCall.kt) singleton.
 
-Check out [Call.Callback][10] for events that can happen with a single call. This sample uses just the `onStateChanged` callback, to update the UI and finish the activity when the remote party hangs up.
+Check out [`Call.Callback`][10] for events that can happen with a single call. This sample uses just the `onStateChanged` callback, to update the UI and finish the activity when the remote party hangs up.
 
   [5]: https://developer.android.com/reference/android/telecom/InCallService.html
   [6]: https://developer.android.com/reference/android/telecom/InCallService.html#onCallAdded(android.telecom.Call)
