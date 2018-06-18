@@ -40,12 +40,6 @@ This will show a dialog similar to this:
 
 [![change default dialer dialog][4]][4]
 
-  [1]: https://developer.android.com/reference/android/content/Intent.html#ACTION_DIAL
-  [2]: https://android.googlesource.com/platform/frameworks/base/+/master/telecomm/java/android/telecom/DefaultDialerManager.java#144
-  [3]: https://android.googlesource.com/platform/packages/apps/Dialer/+/nougat-release/AndroidManifest.xml#79
-  [4]: docs/dialog.png
-  [11]: docs/settings.png
-
 ## Handling calls
 
 You need to define an [`InCallService`][5] implementation the system will bind to and notify you about the call:
@@ -69,9 +63,19 @@ If the user wants to answer the call, you need to invoke the method [`Call#answe
 
 Check out [`Call.Callback`][10] for events that can happen with a single call. This sample uses just the `onStateChanged` callback, to update the UI and finish the activity when the remote party hangs up.
 
+[![call][12]][12]
+
+  [1]: https://developer.android.com/reference/android/content/Intent.html#ACTION_DIAL
+  [2]: https://android.googlesource.com/platform/frameworks/base/+/master/telecomm/java/android/telecom/DefaultDialerManager.java#144
+  [3]: https://android.googlesource.com/platform/packages/apps/Dialer/+/nougat-release/AndroidManifest.xml#79
+  [4]: docs/dialog.png
+  [11]: docs/settings.png
+  
   [5]: https://developer.android.com/reference/android/telecom/InCallService.html
   [6]: https://developer.android.com/reference/android/telecom/InCallService.html#onCallAdded(android.telecom.Call)
   [7]: https://developer.android.com/reference/android/telecom/InCallService.html#onCallRemoved(android.telecom.Call)
   [8]: https://developer.android.com/reference/android/telecom/Call.html#answer(int)
   [9]: https://developer.android.com/reference/android/telecom/VideoProfile.html#STATE_AUDIO_ONLY
   [10]: https://developer.android.com/reference/android/telecom/Call.Callback.html
+  [12]: docs/call.gif
+  
