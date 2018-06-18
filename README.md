@@ -58,7 +58,7 @@ You need to define an [`InCallService`][5] implementation the system will bind t
 
 There you should handle at least [`onCallAdded`][6] (set up listeners on `Call`, start your UI - activity - for the call) and [`onCallRemoved`][7] (remove listeners), like [`CallService`](app/src/main/java/com/github/arekolek/phone/CallService.kt) does in a simplified way.
 
-If the user wants to answer the call, you need to invoke the method [`Call#answer(int)`][8] (with [`VideoProfile.STATE_AUDIO_ONLY`][9] for example). In this example [`CallActivity`](app/src/main/java/com/github/arekolek/phone/CallActivity.kt) reacts to user input by calling those methods on `Call` object shared through the [`OngoingCall`](app/src/main/java/com/github/arekolek/phone/OngoingCall.kt).
+If the user wants to answer the call, you need to invoke the method [`Call#answer(int)`][8] (with [`VideoProfile.STATE_AUDIO_ONLY`][9] for example). In this example [`CallActivity`](app/src/main/java/com/github/arekolek/phone/CallActivity.kt) reacts to user input by calling those methods on `Call` object shared through the [`OngoingCall`](app/src/main/java/com/github/arekolek/phone/OngoingCall.kt) singleton.
 
 Check out [Call.Callback][10] for events that can happen with a single call. This sample uses just the `onStateChanged` callback, to update the UI and finish the activity when the remote party hangs up.
 
