@@ -2,6 +2,8 @@
 
 This project shows the absolute minimum an Android Phone app needs to implement to replace the native phone app and provide the UI when making calls.
 
+This app uses [`minSdkVersion 23`](app/build.gradle), because that's when the APIs supporting this were added.
+
 ## Becoming a default Phone app
 
 To have your app listed as a Phone app, you must have an activity with at least those intent filters (to handle both cases mentioned in documentation of [`ACTION_DIAL`][1], also mentioned in [`DefaultDialerManager` hidden class][2]):
@@ -20,6 +22,10 @@ And to be honest, that's a bit counterintuitive, because setting the default Pho
 
 Filters in the [AndroidManifest](app/src/main/AndroidManifest.xml) improve a bit over that minimum, to allow *setting the app as the default Dialer*, and launching dialer from web browser. The [Dialer app in AOSP][3] has even more filters declared.
 
+Anyway, this will make your app available in the Settings -> Apps & notifications -> Advanced -> Default apps -> Phone app:
+
+[![settings][11]][11]
+
 You can make it easier for the user to set your app as the default Phone app with the help from `TelecomManager`:
 
 ```kotlin
@@ -37,7 +43,8 @@ This will show a dialog similar to this:
   [1]: https://developer.android.com/reference/android/content/Intent.html#ACTION_DIAL
   [2]: https://android.googlesource.com/platform/frameworks/base/+/master/telecomm/java/android/telecom/DefaultDialerManager.java#144
   [3]: https://android.googlesource.com/platform/packages/apps/Dialer/+/nougat-release/AndroidManifest.xml#79
-  [4]: https://i.stack.imgur.com/awS6u.png
+  [4]: docs/dialog.png
+  [11]: docs/settings.png
 
 ## Handling calls
 
