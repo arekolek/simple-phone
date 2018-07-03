@@ -3,6 +3,7 @@ package com.github.arekolek.phone
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.telecom.Call
+import android.view.WindowManager
 import androidx.core.view.isVisible
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_call.*
@@ -15,6 +16,12 @@ class CallActivity : AppCompatActivity() {
     private lateinit var number: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        window.addFlags(
+            WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+                    or WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
+                    or WindowManager.LayoutParams.FLAG_IGNORE_CHEEK_PRESSES
+        )
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_call)
         number = intent.data.schemeSpecificPart
