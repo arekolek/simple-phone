@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.telecom.Call
 import androidx.core.view.isVisible
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.activity_call.*
 import java.util.concurrent.TimeUnit
 
@@ -31,16 +32,16 @@ class CallActivity : AppCompatActivity() {
             OngoingCall.hangup()
         }
 
-        disposables.addAll(
-                OngoingCall.state.subscribe(::updateUi),
-                OngoingCall.state
-                        .filter { it == Call.STATE_DISCONNECTED }
-                        .delay(1, TimeUnit.SECONDS)
-                        .firstElement()
-                        .subscribe {
-                            finish()
-                        }
-        )
+        OngoingCall.state
+            .subscribe(::updateUi)
+            .addTo(disposables)
+
+        OngoingCall.state
+            .filter { it == Call.STATE_DISCONNECTED }
+            .delay(1, TimeUnit.SECONDS)
+            .firstElement()
+            .subscribe { finish() }
+            .addTo(disposables)
     }
 
     private fun updateUi(state: Int) {
@@ -48,9 +49,9 @@ class CallActivity : AppCompatActivity() {
 
         answer.isVisible = state == Call.STATE_RINGING
         hangup.isVisible = state in listOf(
-                Call.STATE_DIALING,
-                Call.STATE_RINGING,
-                Call.STATE_ACTIVE
+            Call.STATE_DIALING,
+            Call.STATE_RINGING,
+            Call.STATE_ACTIVE
         )
     }
 
