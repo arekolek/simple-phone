@@ -1,5 +1,6 @@
 package com.github.arekolek.phone
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -46,6 +47,7 @@ class CallActivity : AppCompatActivity() {
             .addTo(disposables)
     }
 
+    @SuppressLint("SetTextI18n")
     private fun updateUi(state: Int) {
         callInfo.text = "${state.asString().toLowerCase().capitalize()}\n$number"
 
