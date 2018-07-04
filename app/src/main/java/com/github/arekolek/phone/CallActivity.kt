@@ -1,5 +1,7 @@
 package com.github.arekolek.phone
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.telecom.Call
@@ -58,5 +60,14 @@ class CallActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         disposables.clear()
+    }
+
+    companion object {
+        fun start(context: Context, call: Call) {
+            Intent(context, CallActivity::class.java)
+                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                .setData(call.details.handle)
+                .let(context::startActivity)
+        }
     }
 }
