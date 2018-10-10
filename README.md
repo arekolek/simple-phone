@@ -1,6 +1,6 @@
 # Simple Phone
 
-This project shows the absolute minimum an Android Phone app needs to implement to replace the native phone app and provide the UI when making calls.
+This project shows the absolute minimum an Android Phone app needs to implement to replace the native phone app and provide the UI when making calls. It was created to address the lack of good documentation, evidenced by multiple questions on stackoverflow [(1)](https://stackoverflow.com/q/42838222/1916449), [(2)](https://stackoverflow.com/q/41767460/1916449).
 
 This app uses [`minSdkVersion 23`](app/build.gradle), because that's when the APIs supporting this were added.
 
