@@ -4,7 +4,7 @@ This project shows the absolute minimum an Android Phone app needs to implement 
 
 This app uses [`minSdkVersion 23`](app/build.gradle), because that's when the APIs supporting this were added.
 
-There are two steps an app has to make to show its own UI during an ongoing call. One is to implement [`InCallService`][5] that Android will use to notify you about events related to the calls. But before the system will let you know about any call, the user must first choose your app as the default Phone app, and you need to make it available to him as such.
+There are two steps an app has to make to show its own UI during an ongoing call. One is to implement an [`InCallService`][5] that Android will use to notify you about events related to the calls. But before the system will let you know about any call, the user must first choose your app as the default Phone app, and you need to make it available to him as such.
 
 ## Becoming a default Phone app
 
