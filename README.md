@@ -24,7 +24,7 @@ And to be honest, that's a bit counterintuitive, because setting the default Pho
 
 Filters in the [AndroidManifest](app/src/main/AndroidManifest.xml) improve a bit over that minimum, to allow *setting the app as the default Dialer*, and launching dialer from web browser. The [Dialer app in AOSP][3] has even more filters declared.
 
-Anyway, this will make your app available in the Settings -> Apps & notifications -> Advanced -> Default apps -> Phone app:
+Anyway, this will make your app available in the `Settings` -> `Apps & notifications` -> `Advanced` -> `Default apps` -> `Phone app`:
 
 [![settings][11]][11]
 
