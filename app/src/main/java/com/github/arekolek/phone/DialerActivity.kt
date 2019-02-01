@@ -3,16 +3,16 @@ package com.github.arekolek.phone
 import android.Manifest.permission.CALL_PHONE
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.ActivityCompat.requestPermissions
-import android.support.v4.content.PermissionChecker.PERMISSION_GRANTED
-import android.support.v4.content.PermissionChecker.checkSelfPermission
-import android.support.v7.app.AppCompatActivity
 import android.telecom.TelecomManager
 import android.telecom.TelecomManager.ACTION_CHANGE_DEFAULT_DIALER
 import android.telecom.TelecomManager.EXTRA_CHANGE_DEFAULT_DIALER_PACKAGE_NAME
-import androidx.core.content.systemService
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat.requestPermissions
+import androidx.core.content.PermissionChecker.PERMISSION_GRANTED
+import androidx.core.content.PermissionChecker.checkSelfPermission
 import androidx.core.net.toUri
 import kotlinx.android.synthetic.main.activity_dialer.*
+
 
 class DialerActivity : AppCompatActivity() {
 
@@ -42,9 +42,9 @@ class DialerActivity : AppCompatActivity() {
     }
 
     override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<out String>,
-            grantResults: IntArray
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
     ) {
         if (requestCode == REQUEST_PERMISSION && PERMISSION_GRANTED in grantResults) {
             makeCall()
@@ -52,10 +52,10 @@ class DialerActivity : AppCompatActivity() {
     }
 
     private fun offerReplacingDefaultDialer() {
-        if (systemService<TelecomManager>().defaultDialerPackage != packageName) {
+        if (getSystemService(TelecomManager::class.java).defaultDialerPackage != packageName) {
             Intent(ACTION_CHANGE_DEFAULT_DIALER)
-                    .putExtra(EXTRA_CHANGE_DEFAULT_DIALER_PACKAGE_NAME, packageName)
-                    .let(::startActivity)
+                .putExtra(EXTRA_CHANGE_DEFAULT_DIALER_PACKAGE_NAME, packageName)
+                .let(::startActivity)
         }
     }
 

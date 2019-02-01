@@ -4,8 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.telecom.Call
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
